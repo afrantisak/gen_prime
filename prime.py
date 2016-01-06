@@ -19,12 +19,14 @@ def generate():
             yield num
         num += 2
 
-def generate_less_than(max):
-    return itertools.takewhile(lambda num: num < max, generate())
+def generate_less_than(maximum):
+    return itertools.takewhile(lambda num: num < maximum, generate())
 
-def print_primes_less_than(max):
-    for prime in generate_less_than(max):
-        print prime
+def print_primes_less_than(num):
+    last = 1
+    for prime in generate_less_than(num):
+        print prime, prime - last
+        last = prime
     
 def main():
     num = int(sys.argv[1]) if len(sys.argv) > 1 else 100
