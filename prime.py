@@ -21,7 +21,8 @@ def print_primes_less_than(max):
         print prime
     
 def main():
-    print_primes_less_than(100000)
+    num = int(sys.argv[1]) if len(sys.argv) > 1 else 100
+    print_primes_less_than(num)
     return 0
 
 if __name__ == "__main__":
