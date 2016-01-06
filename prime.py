@@ -2,17 +2,20 @@ import sys
 import math
 import itertools
 
-def is_divisible(num, den):
-    return num % den == 0
+def is_prime_0(num):
+    return all(num % i != 0 for i in xrange(3, int(math.sqrt(num)) + 1))
 
-def is_prime(num):
-    return all(not is_divisible(num, i) for i in xrange(3, int(math.sqrt(num)) + 1))
+def is_not_divisible(num, den):
+    return num % den != 0
+
+def is_prime_1(num):
+    return all(is_not_divisible(num, i) for i in xrange(3, int(math.sqrt(num)) + 1))
 
 def generate():
     yield 2
     num = 3
     while True:
-        if is_prime(num):
+        if is_prime_0(num):
             yield num
         num += 2
 
