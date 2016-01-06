@@ -1,22 +1,28 @@
+import sys
 import math
+import itertools
 
-def generator():
+def is_prime(num):
+    return all(num % i != 0 for i in xrange(2, int(math.sqrt(num)) + 1))
+
+def generate():
     yield 2
     num = 3
     while True:
-        if all(num % i != 0 for i in xrange(2, int(math.sqrt(num)) + 1)):
+        if is_prime(num):
             yield num
         num += 2
 
-def primes_less_than(max):
-    gen = generator()
-    num = gen.next()
-    while num < max:
-        print num
-        num = gen.next()
+def generate_less_than(max):
+    return itertools.takewhile(lambda num: num < max, generate())
+
+def print_primes_less_than(max):
+    for prime in generate_less_than(max):
+        print prime
     
 def main():
-    return primes_less_than(100000)
+    print_primes_less_than(100000)
+    return 0
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
