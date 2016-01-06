@@ -2,8 +2,11 @@ import sys
 import math
 import itertools
 
+def is_divisible(num, den):
+    return num % den == 0
+
 def is_prime(num):
-    return all(num % i != 0 for i in xrange(2, int(math.sqrt(num)) + 1))
+    return all(not is_divisible(num, i) for i in xrange(3, int(math.sqrt(num)) + 1))
 
 def generate():
     yield 2
