@@ -4,17 +4,20 @@ import numpy as np
 import prime
 
 def plot_primes_less_than(maximum):
-    x = [1]
-    y = [0]
+    x = []
+    y = []
     last = 1
     for num in prime.generate_less_than(maximum):
         x += [num]
         y += [num - last]
         last = num
-        
+
+    max_y = max(y)
+
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1)
     ax.scatter(x, y)
+    ax.axis([-10, len(x)+10, 0, max_y + 10])
     plt.show()
 
 def main():
