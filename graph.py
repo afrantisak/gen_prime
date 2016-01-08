@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import prime
 import sets
+import math
 
 def get_deltas(iterable, init):
     x = []
@@ -36,7 +37,7 @@ def plot_prime_dbl_deltas(maximum):
         xf, yf = zip(*xyf)
         xn, yn = get_deltas(xf, 0)
         x2 += [n] * len(xn)
-        y2 += yn
+        y2 += [y / math.pow(n, 2) for y in yn]
         z2 += [colors[index]] * len(xn)
     plot_2d(x2, y2, z2)
 
