@@ -2,7 +2,7 @@ import sys
 import math
 import itertools
 
-def ideltas(iterable, init_value):
+def deltas(iterable, init_value):
     last = init_value
     for num in iterable:
         yield num - last

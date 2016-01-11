@@ -7,7 +7,7 @@ import lib.vector
 
 def get_prime_deltas(maximum):
     primes = list(lib.prime.generate_less_than(maximum))
-    deltas = list(lib.vector.ideltas(primes, 1))
+    deltas = list(lib.vector.deltas(primes, 1))
     return primes, deltas
 
 def plot_prime_deltas(maximum):
