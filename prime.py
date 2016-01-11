@@ -1,31 +1,21 @@
 import sys
-import math
-import itertools
-
-def is_prime_0(num):
-    return all(num % i != 0 for i in xrange(3, int(math.sqrt(num)) + 1))
-
-def is_not_divisible(num, den):
-    return num % den != 0
-
-def is_prime_1(num):
-    return all(is_not_divisible(num, i) for i in xrange(3, int(math.sqrt(num)) + 1))
-
-def generate():
-    yield 2
-    num = 3
-    while True:
-        if is_prime_0(num):
-            yield num
-        num += 2
-
-def generate_less_than(maximum):
-    return itertools.takewhile(lambda num: num < maximum, generate())
+import lib.prime
 
 def print_primes_less_than(num):
     last = 1
-    for prime in generate_less_than(num):
-        print prime, prime - last
+    for prime in lib.prime.generate_less_than(num):
+        print prime#, prime - last
+        last = prime
+
+def print_prime_deltas_less_than(num):
+    last = 1
+    cur_max = 0
+    for prime in lib.prime.generate_less_than(num):
+        delta = prime - last
+        if cur_max < delta:
+           cur_max = delta
+           print
+        print "%5d  %5d" % (prime, delta)
         last = prime
     
 def main():

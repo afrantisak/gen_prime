@@ -1,33 +1,21 @@
 import sys
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
+import prime
 import sets
 import math
-import lib.prime
+import lib.vector
 import lib.plot
 
-def get_deltas(iterable, init):
-    x = []
-    y = []
-    last = init
-    for num in iterable:
-        x += [num]
-        y += [num - last]
-        last = num
-    return x, y
-
 def get_prime_deltas(maximum):
-    return get_deltas(lib.prime.generate_less_than(maximum), 1)
+    return lib.vector.get_deltas(prime.generate_less_than(maximum), 1)
 
 def plot_prime_deltas(maximum):
     x, y = get_prime_deltas(maximum)
-    lib.plot.show_2d(x, y)
+    plot_2d(x, y)
 
 def plot_prime_dbl_deltas(maximum):
     x, y = get_prime_deltas(maximum)
     deltas = sets.Set(y)
-    lib.plot.rainbow_range(deltas)
+    colors = lib.plot.rainbow_range(deltas)
     xy = zip(x, y)
     x2 = []
     y2 = []
@@ -40,7 +28,7 @@ def plot_prime_dbl_deltas(maximum):
         x2 += [n] * len(xn)
         y2 += [math.log(y) for y in yn]
         z2 += [colors[index]] * len(xn)
-    lib.plot.show_2d(x2, y2, z2)
+    lib.plot.2d(x2, y2, z2)
 
 def main():
     num = int(sys.argv[1]) if len(sys.argv) > 1 else 100
