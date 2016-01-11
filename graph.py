@@ -1,24 +1,14 @@
 import sys
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
 import sets
 import math
 import lib.prime
 import lib.plot
-
-def get_deltas(iterable, init):
-    x = []
-    y = []
-    last = init
-    for num in iterable:
-        x += [num]
-        y += [num - last]
-        last = num
-    return x, y
+import lib.vector
 
 def get_prime_deltas(maximum):
-    return get_deltas(lib.prime.generate_less_than(maximum), 1)
+    primes = list(lib.prime.generate_less_than(maximum))
+    deltas = list(lib.vector.ideltas(primes, 1))
+    return primes, deltas
 
 def plot_prime_deltas(maximum):
     x, y = get_prime_deltas(maximum)
@@ -26,13 +16,13 @@ def plot_prime_deltas(maximum):
 
 def plot_prime_dbl_deltas(maximum):
     x, y = get_prime_deltas(maximum)
-    deltas = sets.Set(y)
-    lib.plot.rainbow_range(deltas)
+    unique_deltas = sets.Set(y)
+    lib.plot.rainbow_range(unique_deltas)
     xy = zip(x, y)
     x2 = []
     y2 = []
     z2 = []
-    for index, n in enumerate(deltas):
+    for index, n in enumerate(unique_deltas):
         xyf = [p for p in xy if p[1] == n]
         if not xyf: continue
         xf, yf = zip(*xyf)
