@@ -29,7 +29,7 @@ def plot(maximum):
     group_xs = []
     group_ys = []
     group_zs = []
-    colors = lib.plot.rainbow_range(delta_groups)
+    colors = lib.plot.rainbow_range(len(delta_groups))
     for group_index, group in enumerate(delta_groups):
         group_spacing = 100.0 / (len(group) - 1)
         group_max = max(group)
