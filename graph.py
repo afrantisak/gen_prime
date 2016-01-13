@@ -17,7 +17,7 @@ def plot_prime_deltas(maximum):
 def plot_prime_dbl_deltas(maximum):
     x, y = get_prime_deltas(maximum)
     unique_deltas = sets.Set(y)
-    lib.plot.rainbow_range(unique_deltas)
+    colors = lib.plot.rainbow_range(unique_deltas)
     xy = zip(x, y)
     x2 = []
     y2 = []

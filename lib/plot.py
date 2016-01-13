@@ -2,7 +2,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
-def rainbox_range(maximum):
+def rainbow_range(maximum):
     return matplotlib.cm.rainbow(np.linspace(0, 1, len(maximum)))
 
 def show_2d(x, y, c=None):
