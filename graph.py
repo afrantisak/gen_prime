@@ -12,7 +12,8 @@ def get_prime_deltas(maximum):
 
 def plot_prime_deltas(maximum):
     x, y = get_prime_deltas(maximum)
-    lib.plot.show_2d(x, y)
+    lib.plot.show_2d(range(len(y)), y)
+    #lib.plot.show_2d(x, y)
 
 def plot_prime_dbl_deltas(maximum):
     x, y = get_prime_deltas(maximum)
@@ -34,8 +35,8 @@ def plot_prime_dbl_deltas(maximum):
 
 def main():
     num = int(sys.argv[1]) if len(sys.argv) > 1 else 100
-    plot_prime_dbl_deltas(num)
-    #plot_prime_deltas(num)
+    #plot_prime_dbl_deltas(num)
+    plot_prime_deltas(num)
     return 0
 
 if __name__ == "__main__":

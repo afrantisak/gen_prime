@@ -42,13 +42,7 @@ def plot(maximum):
         group_xs += x
         group_ys += y
         group_zs += [colors[group_index]] * len(group)
-        #print "gs", group_spacing
-        #print "x", x
-        #print "y", y
     lib.plot.show_2d(group_xs, group_ys, group_zs)
-    #print "x", group_xs
-    #print "y", group_ys
-    #print 
 
 def main():
     num = int(sys.argv[1]) if len(sys.argv) > 1 else 100
